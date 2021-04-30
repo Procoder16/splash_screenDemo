@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +23,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0B1328),
@@ -38,6 +51,23 @@ class _SplashScreenState extends State<SplashScreen> {
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF0B1328),
+        title: Text('Home Page'),
+      ),
+      body: Container(
+        child: Center(
+          child: Text('Home Page Content'),
         ),
       ),
     );
